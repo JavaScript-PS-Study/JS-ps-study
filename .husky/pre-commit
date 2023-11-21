@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+
+isValidBranchName="(week)(1|2|3|4)\/\w*"
+
+if [[ $BRANCH_NAME == "main" ]]; then
+    exit 0
+elif [[ ! $BRANCH_NAME =~ $isValidBranchName ]]; then
+    echo "🚨 브랜치 네이밍 규칙을 지켜주세요. 예시) week1/seo0h"
+    echo "current brench name  : ${BRANCH_NAME}"
+    exit 1
+fi
+
+exit 0
