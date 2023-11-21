@@ -2,16 +2,15 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 commit_msg_file=$1
-commit_msg=$(cat $1)
+
+commit_msg=$(awk '!/^\s*#/' "$commit_msg_file")
 second_line=$(echo "$commit_msg" | sed -n '2p')
-description=$(echo "$commit_msg" | sed -n '3p')
 
 # header - regex
 isLengthUnder50='^(.{1,50}$)'
 hasTypeEnum='(\[Daily]|\[Meeting])'
 isTitleUnder20Length='.{1,20} \/'
-isLevelValid=' (level) (1|2|3|4|5) \/'
-isTimeVaild='.{0,5}?[sm]$'
+isLevelValid=' (level) (1|2|3|4|5)'
 
 # header
 if ! grep -qP "$isLengthUnder50" "$commit_msg_file"; then
@@ -36,14 +35,7 @@ if ! grep -qP "${hasTypeEnum}${isTitleUnder20Length}" "$commit_msg_file"; then
 fi
 
 if ! grep -qP "${hasTypeEnum}${isTitleUnder20Length}${isLevelValid}" "$commit_msg_file"; then
-    echo "🚨 level + (1|2|3|4|5) 형식으로 입력 해 주세요."
-    echo "$commit_msg"
-    echo "$second_line"
-    exit 1
-fi
-
-if ! grep -qP "${hasTypeEnum}${isTitleUnder20Length}${isLevelValid}${isTimeVaild}" "$commit_msg_file"; then
-    echo "🚨 효휼성 시간은 총 4자리까지, 그리고 초 또는 분을 나타내는 (s|m) 이 포함되어야 해요. ex) 0.06s"
+    echo "🚨 level (1|2|3|4|5) 형식으로 입력 해 주세요."
     echo "$commit_msg"
     echo "$second_line"
     exit 1
@@ -52,12 +44,6 @@ fi
 # description
 if ! [ -z "$second_line" ]; then
   echo "🚨 두번째 줄은 비워둬야 해요."
-  echo "$commit_msg"
-  exit 1
-fi
-
-if [ -z "$description" ]; then
-  echo "🚨 설명에 문제URL을 작성해주세요."
   echo "$commit_msg"
   exit 1
 fi

@@ -1,0 +1,12 @@
+{
+	"Problem solving code comments": {
+		"prefix": "**",
+		"body": [
+		  "/*",
+		  " * @url $CLIPBOARD",
+		  " * @date $CURRENT_YEAR_SHORT-$CURRENT_MONTH-$CURRENT_DATE",
+		  " */"
+		],
+		"description": "문제 풀이 코드 주석"
+	  }
+}

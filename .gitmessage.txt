@@ -1,4 +1,0 @@
-# [Daily | Meeting] [문제 이름] / [level] /[성능 효휼성 시간] (s | m)
-
-# 문제 URL: [URL..]
-
