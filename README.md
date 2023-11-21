@@ -27,7 +27,7 @@
   - 해당 주차 공통 문제 리스트 중 할 수 있는 만큼 한주간풀이 후, 해당 문제를 푼 방법에 대해 발표 및 토론
   - 문제 접근 방식과 구현 방식에 대해 인당 5분정도 발표 후 상호 피드백
 
-- **비대면 문풀 스크럼 (선택)**
+- **비대면 문풀 스크럼 (주 2회 참석 필수)**
 
   - **매주 월요일, 화요일, 수요일, 목요일 오전 10시 - 11시**
   - 참석자 미리 노션에 참여 등록
@@ -66,14 +66,16 @@
 
 3. 자신의 닉네임으로 된 폴더를 생성합니다. 폴더의 구조는 [`W1/template`](./W1/template/)와 같아야 합니다. 이를 위해 아래의 커멘드를 실행합니다.
 
-   ```cmd
-   // WINDOW
-   mkdir [Week]/[My Nickname]                 // 폴더 생성
-   xcopy W1\template [Week]/[My Nickname] /E  // 템플릿 폴더 복제
-
-   //MAC
-
-   ```
+    ```cmd
+     // WINDOW
+     mkdir [Week]/[My Nickname]                 // 폴더 생성
+     xcopy W1\template [Week]/[My Nickname] /E  // 템플릿 폴더 복제
+    ```
+    ```cmd
+      # MAC
+      mkdir -p Week/"My Nickname"                 # 폴더 생성
+      cp -r W1/template Week/"My Nickname"        # 템플릿 폴더 복사
+    ```
 
 - 폴더 구조 및 설명
 
@@ -88,7 +90,7 @@
 
 4. 문제를 푼 후, 풀이한 **문제의 제목을 파일 제목으로 설정**합니다. 예시) [`두-수의-차.js`](./W1/template/daily/두-수의-차.sample.js)
 
-5. 미리 설정되어 있는 [Snippets](.vscode/snippet.code-snippets) 을 이용해 해당 코드에 주석을 답니다. 복사한 url이 자동으로 붙여넣기 됩니다. ( `**` 입력 시 자동완성이 활성화 됩니다.)
+5. 미리 설정되어 있는 [Snippets](.vscode/snippet.code-snippets) 을 이용해 해당 코드에 주석을 답니다. 복사한 url이 자동으로 붙여넣기 됩니다. <br /> ( `**` 입력 시 자동완성이 활성화 됩니다.)
 
 6. 주석 하단에 solution 코드를 복사 붙여넣기 한 후, 아래의 commit 컨벤션을 지켜 커밋을 남깁니다.
 
