@@ -9,15 +9,23 @@ SECOND_LINE=$(echo "$COMMIT_MSG" | sed -n '2p')
 
 IS_HEADER_LENGTH_UNDER_50='^(.{1,50}$)'
 IS_INCLUDE_A_TYPE='(\[Daily]|\[Meeting])'
-IS_TITLE_LENGTH_UNDER_20='.{1,20} \/'
-IS_LEVEL_VALID=' (level) (1|2|3|4|5)'
+IS_LEVEL_VALID=' (\/ level) (1|2|3|4|5)'
 
-# 커밋되는 브랜치가 메인 브랜치 이거나, Merge 커밋 메시지인 경우 무시 처리
+# --- 초기 예외처리 ---
 if [[ $CURRENT_BRANCH_NAME == "main" ]] || [[ $COMMIT_MSG =~ Merge ]]; then
+    exit 0
+elif [[ $COMMIT_MSG =~ (\[Meeting\] Update README) ]]; then
     exit 0
 fi
 
-# header
+if [[ "$CURRENT_BRANCH_NAME" =~ meeting ]] && [[ ! $COMMIT_MSG =~ \[Meeting\] ]]; then
+    echo "🚨 /meeting branch에서는 [Meeting] type 으로 작성해주세요."
+    echo "$CURRENT_BRANCH_NAME"
+    echo "$COMMIT_MSG"
+    exit 1
+fi
+
+# --- header ---
 if ! grep -qP "$IS_HEADER_LENGTH_UNDER_50" "$COMMIT_MSG_FILE"; then
     echo "🚨 Header는 50자를 넘을 수 없어요."
     echo "$COMMIT_MSG"
@@ -32,21 +40,14 @@ if ! grep -qP "$IS_INCLUDE_A_TYPE" "$COMMIT_MSG_FILE"; then
     exit 1
 fi
 
-if ! grep -qP "${IS_INCLUDE_A_TYPE}${IS_TITLE_LENGTH_UNDER_20}" "$COMMIT_MSG_FILE"; then
-    echo "🚨 문제 제목은 20자 이하여야 해요."
+if ! grep -qP "$IS_LEVEL_VALID" "$COMMIT_MSG_FILE"; then
+    echo "🚨 / level (1|2|3|4|5) 형식으로 입력 해 주세요. (띄어쓰기도 포함이에요!)"
     echo "$COMMIT_MSG"
     echo "$SECOND_LINE"
     exit 1
 fi
 
-if ! grep -qP "${IS_INCLUDE_A_TYPE}${IS_TITLE_LENGTH_UNDER_20}${IS_LEVEL_VALID}" "$COMMIT_MSG_FILE"; then
-    echo "🚨 level (1|2|3|4|5) 형식으로 입력 해 주세요."
-    echo "$COMMIT_MSG"
-    echo "$SECOND_LINE"
-    exit 1
-fi
-
-# description
+# --- description ---
 if ! [ -z "$SECOND_LINE" ]; then
   echo "🚨 두 번째 줄은 비워둬야 해요."
   echo "$COMMIT_MSG"
