@@ -51,7 +51,7 @@
    husky와 Prettier 설치를 위해 필요 의존성을 다운로드 합니다.
 
    ```
-   git clone https://github.com/JavaScript-PS-Study/JS-ps-study-1st.git
+   git clone https://github.com/JavaScript-PS-Study/JSPS.git
    ```
 
    ```
