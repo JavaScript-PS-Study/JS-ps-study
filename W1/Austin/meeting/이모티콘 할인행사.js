@@ -6,8 +6,9 @@
 function solution(users, emoticons) {
 	const DISCOUNT_RATES = [10, 20, 30, 40];
 
-	// 각 할인율 경우에 따른 계산
+	// 각 할인율의 경우에 따른 계산
 	const calcResult = discountArr => {
+		// 할인율이 적용된 이모티콘 가격들
 		const discountedPriceArr = [...emoticons].map((i, index) => {
 			const currentDiscount = discountArr[index];
 			return i - i * (currentDiscount / 100);
@@ -15,6 +16,9 @@ function solution(users, emoticons) {
 
 		let totalPrice = 0;
 		let totalEnroll = 0;
+
+		// 각 유저 배열을 순회하며 discountedPriceArr 에 대한
+		// 결과 도출
 		for (let i = 0; i < users.length; i++) {
 			const [percent, price] = users[i];
 
@@ -25,6 +29,7 @@ function solution(users, emoticons) {
 				if (percent <= discountArr[j]) {
 					buyListPrice += discountedPriceArr[j];
 				}
+
 				if (buyListPrice >= price) {
 					isEnroll = true;
 				}
@@ -41,12 +46,18 @@ function solution(users, emoticons) {
 		return [totalEnroll, totalPrice];
 	};
 
-	let result = [];
-
-	// 백트래킹
+	let result = [0, 0];
 	const dfs = current => {
 		if (current.length === emoticons.length) {
-			result.push(calcResult(current));
+			const [totalEnroll, totalPrice] = calcResult(current);
+
+			if (result[0] === totalEnroll && result[1] < totalPrice) {
+				result = [totalEnroll, totalPrice];
+			}
+			if (result[0] < totalEnroll) {
+				result = [totalEnroll, totalPrice];
+			}
+
 			return;
 		}
 
@@ -59,8 +70,5 @@ function solution(users, emoticons) {
 
 	dfs([]);
 
-	return result.sort((a, b) => {
-		if (a[0] === b[0]) return b[1] - a[1];
-		return b[0] - a[0];
-	})[0];
+	return result;
 }
