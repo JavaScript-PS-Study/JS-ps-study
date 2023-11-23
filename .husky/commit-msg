@@ -12,9 +12,9 @@ IS_INCLUDE_A_TYPE='(\[Daily]|\[Meeting])'
 IS_LEVEL_VALID=' (\/ level) (1|2|3|4|5)'
 
 # --- 초기 예외처리 ---
-if [[ $CURRENT_BRANCH_NAME == "main" ]] || [[ $COMMIT_MSG =~ Merge ]]; then
+if [[ $CURRENT_BRANCH_NAME == "main" ]] || [[ $COMMIT_MSG =~ Merge ]] || [[ $COMMIT_MSG =~ \[Fix\] ]]; then
     exit 0
-elif [[ $COMMIT_MSG =~ (\[Meeting\] Update README) ]]; then
+elif [[ $COMMIT_MSG =~ (\[Meeting\] Update (README|Readme)) ]]; then
     exit 0
 fi
 
