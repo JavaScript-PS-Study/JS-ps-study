@@ -1,4 +1,5 @@
 # [Daily] 문제 이름 / level [1-4]
+# [Daily] 문제 이름 / Unrated|Bronze|Silver|Gold|Platinum|Diamond|Ruby
 # [Meeting] 문제 이름 / level [1-4]
 # [Meeting] Update README
 # [Fix] Fix something.. #issuNumber

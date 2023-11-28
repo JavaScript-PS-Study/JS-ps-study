@@ -9,7 +9,7 @@ SECOND_LINE=$(echo "$COMMIT_MSG" | sed -n '2p')
 
 IS_HEADER_LENGTH_UNDER_50='^(.{1,50}$)'
 IS_INCLUDE_A_TYPE='(\[Daily]|\[Meeting])'
-IS_LEVEL_VALID=' (\/ level) (1|2|3|4|5)'
+IS_LEVEL_VALID='( \/ )((level [1-5])|(Unrated)|(Bronze)|(Silver)|(Gold)|(Platinum)|(Diamond)|(Ruby))'
 
 # --- 초기 예외처리 ---
 if [[ $CURRENT_BRANCH_NAME == "main" ]] || [[ $COMMIT_MSG =~ Merge ]] || [[ $COMMIT_MSG =~ \[Fix\] ]]; then

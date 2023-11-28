@@ -54,7 +54,8 @@
 - **Commit convention**
 
   ```
-   [Daily] 문제 이름 / level (0|1|2|3|4)
+   [Daily] 문제 이름 / level [1-5] # Programmers
+   [Daily] 문제 이름 / Unrated|Bronze|Silver|Gold|Platinum|Diamond|Ruby # 백준
   ```
 
 - **Branch Convention** : `[해당 주차]/[닉네임]/daily`
@@ -70,7 +71,7 @@
 - **Commit convention**
 
 ```
- [Meeting] 문제 이름 / level (0|1|2|3|4)
+ [Meeting] 문제 이름 / level [1-5]
  [Meeting] Update README
 ```
 
