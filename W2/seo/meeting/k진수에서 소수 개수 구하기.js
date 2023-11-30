@@ -23,9 +23,20 @@ function solution(n, k) {
 }
 
 function isPrime(num) {
-	if (num <= 1) return false;
-	for (let i = 2; i <= Math.sqrt(num); i++) {
-		if (num % i === 0) return false;
+	// 1은 소수가 아니다
+	if (num === 1) return false;
+
+	// 2는 소수 중 유일한 짝수이다.
+	if (num % 2 === 0) {
+		return num === 2 ? true : false;
 	}
+
+	// 홀수 중 다른 수에 의해 나눠지는지 판단한다.- 탐색 범위는 root num 까지
+	for (let divider = 3; divider <= parseInt(Math.sqrt(num)); divider += 2) {
+		if (num % divider === 0) {
+			return false;
+		}
+	}
+
 	return true;
 }
