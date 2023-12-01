@@ -1,5 +1,8 @@
-## 대면 스터디
+> 12월 01일 대면 모임 진행을 위한 PR입니다.
 
-- 날짜 : 11월 24일 오전 10시
+- 푼 사람 : @minh0518
 
-> 해당 readme문서는 발표에 필요한 내용이 있다면, 자유롭게 이용해주시면 됩니다.
+- 푼 문제
+  - [x] [신고 결과 받기](https://school.programmers.co.kr/learn/courses/30/lessons/92334)
+  - [x] [주차 요금 계산](https://school.programmers.co.kr/learn/courses/30/lessons/92341)
+  - [x] [K진수에서 소수 개수 구하기](https://school.programmers.co.kr/learn/courses/30/lessons/92335)
