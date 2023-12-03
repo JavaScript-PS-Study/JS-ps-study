@@ -3,12 +3,12 @@
 
 BRANCH_NAME=$(git symbolic-ref --short HEAD)
 
-isValidBranchName='(week)[1-4]\/(.*)\/(meeting|daily)'
+isValidBranchName='(.*)\/(meeting|daily)$'
 
 if [[ $BRANCH_NAME == "main" ]] || [[ $BRANCH_NAME =~ fix ]]; then
     exit 0
 elif [[ ! $BRANCH_NAME =~ $isValidBranchName ]]; then
-    echo "🚨 브랜치 네이밍 규칙을 지켜주세요. 예시) week1/seo/daily 또는 week1/seo/meeting"
+    echo "🚨 브랜치 네이밍 규칙을 지켜주세요. 예시) seo/daily 또는 seo/meeting"
     echo "current brench name  : ${BRANCH_NAME}"
     exit 1
 fi

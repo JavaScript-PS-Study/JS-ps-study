@@ -58,8 +58,8 @@
    [Daily] 문제 이름 / Unrated|Bronze|Silver|Gold|Platinum|Diamond|Ruby # 백준
   ```
 
-- **Branch Convention** : `[해당 주차]/[닉네임]/daily`
-- **문서 작성 폴더 위치** : `[해당 주차]/[닉네임]/daily`
+- **Branch Convention** : `[닉네임]/daily`
+- **문서 작성 폴더 위치** : `[닉네임]/daily`
 - 문제 풀이 타입입니다. **문제 풀이 후 컨벤션을 지켜 origin으로 PR**합니다.
 - **PR시 하나의 문제에 대해서만 PR**이 가능합니다.
   - A 문제를 여러번 커밋한 후 PR 가능
@@ -75,8 +75,8 @@
  [Meeting] Update README
 ```
 
-- **Branch Convention** : `[해당 주차]/[닉네임]/meeting`
-- **문서 작성 폴더 위치** : `[해당 주차]/[닉네임]/meeting`
+- **Branch Convention** : `[닉네임]/meeting`
+- **문서 작성 폴더 위치** : `[닉네임]/meeting`
 - **문제풀이**를 올리거나, **발표용 README를 수정**할 수 있습니다.
 - 문제풀이를 올릴 경우 Daily의 규칙 커밋 컨벤션을 적용합니다.
 - README를 수정할 경우 Update README 라고 작성합니다.
@@ -119,7 +119,7 @@
 2. 해당 Repo에 컨벤션을 지켜 자신의 브랜치를 생성 후 체크아웃합니다.
 
    ```
-   git branch -b [해당 주차]/[닉네임]/(daily|meeting)
+   git branch -b [닉네임]/(daily|meeting)
    ```
 
 3. 자신의 닉네임으로 된 폴더를 생성합니다. 폴더의 구조는 [`W1/template`](./W1/template/)와 같아야 합니다. 이를 위해 아래의 커멘드를 실행합니다.
